@@ -15,14 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 import social.views 
 import myapp.views
+import upload.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', social.views.signin, name="signin"),
     path('accounts/', include('allauth.urls')),
     path('home/', myapp.views.home, name="home"),
+    path('upload/',upload.views.upload, name = "upload"),
+    path('form/<int:form_id>/', upload.views.detail , name= "detail"),
+    path('create', upload.views.create, name= 'create'),
     # path('accounts/kakao/login/callback/', myapp.views.home, name="kakao callback"),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

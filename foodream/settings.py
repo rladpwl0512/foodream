@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
+from pathlib import Path, os
 from django.contrib.messages import constants as messages_constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.naver',
     'allauth.socialaccount.providers.kakao',
+    'upload.apps.UploadConfig',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,5 @@ ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아�
 ACCOUNT_SIGNUP_FORM_CLASS = 'social.forms.SignupForm'
 
 MESSAGE_LEVEL = messages_constants.DEBUG
+MEDIA_ROOT = os.path.join(BASE_DIR, 'upload','media')
+MEDIA_URL = 'upload/media/'
