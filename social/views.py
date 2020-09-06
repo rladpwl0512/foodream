@@ -12,7 +12,7 @@ def signin(request):
             auth.login(request, user)
             return redirect('home')
         else:
-            messages.add_message(request, message.INFO, '로그인에 실패하였습니다.')
+            messages.info(request,'로그인에 실패하였습니다.')
             return render(request, 'signin.html')
 
     #소셜로그인 성공할 시에 
