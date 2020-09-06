@@ -1,2 +1,0 @@
-# foodream
-# foodream_login
