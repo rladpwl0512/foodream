@@ -15,22 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
+=======
+import social.views 
+import myapp.views
+>>>>>>> 4aea679fcf1922e19eb5fb5001df706fb9724fdc
 import upload.views
 import mileage.views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', social.views.signin, name="signin"),
+    path('accounts/', include('allauth.urls')),
+    path('home/', myapp.views.home, name="home"),
     path('upload/',upload.views.upload, name = "upload"),
     path('form/<int:form_id>/', upload.views.detail , name= "detail"),
     path('create', upload.views.create, name= 'create'),
+<<<<<<< HEAD
     path('mileage/<int:mileage_id>', mileage.views.content, name= "content"),
     path('mileage/<int:mileage_id>/donate', mileage.views.donate, name= "donate"),
     path('mileage/popup', mileage.views.popup, name = "popup"),
 
     
+=======
+    path('list/', upload.views.list , name= "list"),
+    # path('accounts/kakao/login/callback/', myapp.views.home, name="kakao callback"),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 4aea679fcf1922e19eb5fb5001df706fb9724fdc
 
-    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
