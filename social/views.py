@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
-    
+from upload.models import Form
+
 def signin(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -17,7 +18,7 @@ def signin(request):
 
     #소셜로그인 성공할 시에 
     elif request.user.is_authenticated:
-        return render(request,'home.html')
+         return redirect('home')
 
     else:        
         return render(request, 'signin.html')
