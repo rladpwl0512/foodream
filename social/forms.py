@@ -5,8 +5,6 @@ from .models import TestUserProfile
 class SignupForm(forms.Form):
     class Meta:
         model = User
-
-   
     address = forms.CharField(max_length=64, widget=forms.TextInput(attrs={'placeholder':'주소'}))
     phone_number = forms.CharField(max_length=32, widget=forms.TextInput(attrs={'placeholder':'010-0000-0000'}))
     registration_number = forms.CharField(max_length=32, widget=forms.TextInput(attrs={'placeholder':'000000-0000000'}))

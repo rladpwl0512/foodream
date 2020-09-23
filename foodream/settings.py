@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
     'social.apps.SocialConfig',
 
+
      
     #allauth
     'allauth',
