@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 def detail(request, form_id):
     form_detail =get_object_or_404(Form, pk = form_id)
-    return render(request, 'detail.html',{'form': form_detail})
+    return render(request, 'detail.html', {'form': form_detail})
 
 def upload(request):
     return render(request, 'upload.html')
