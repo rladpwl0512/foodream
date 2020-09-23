@@ -45,6 +45,7 @@ urlpatterns = [
     path('upload/',upload.views.upload, name = "upload"),
     path('form/<int:form_id>/', upload.views.detail , name= "detail"),
     path('create', upload.views.create, name= 'create'),
+    path('list/', upload.views.list , name= "list"),
     # path('accounts/kakao/login/callback/', myapp.views.home, name="kakao callback"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

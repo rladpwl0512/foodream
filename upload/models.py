@@ -1,4 +1,5 @@
 from django.db import models
+from social.models import TestUserProfile
 
 # Create your models here.
 class Form(models.Model):
@@ -24,10 +25,7 @@ class Deadline(models.Model):
 
 
 
-
-    
-
 class Like(models.Model):    
-    user = models. ForeignKey(User), on_delete=models.CASCADE, null = True)
-    form = models. ForeignKey((Form, on_delete=models.CASCADE, null = True) 
+    user = models. ForeignKey(TestUserProfile, on_delete=models.CASCADE, null = True)
+    form = models. ForeignKey(Form, on_delete=models.CASCADE, null = True) 
     like = models. BooleanField       

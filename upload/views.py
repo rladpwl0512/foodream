@@ -1,11 +1,14 @@
 from django.shortcuts import render,get_object_or_404, redirect
-from .models import Form
+from .models import Form, Like
+from django.utils import timezone
+from django.core.paginator import Paginator
+
+
+
 
 
 # Create your views here.
-def detail(request, form_id):
-    form_detail =get_object_or_404(Form, pk = form_id)
-    return render(request, 'detail.html',{'form': form_detail})
+
 
 def upload(request):
     return render(request, 'upload.html')
@@ -42,3 +45,9 @@ def detail(request, form_id):
             return render(request,'detail.html', {'current_form':current_form, 'current_user_like':current_user_like })
         return render(request,'detail.html',{'current_form':current_form})    
 
+def list(request):
+  forms = Form.objects.all().order_by('-id')
+  paginator = Paginator(forms,6)
+  page = request.GET.get('page', 1)
+  posts = paginator.get_page(page)
+  return render(request, 'list.html',{'posts':posts})

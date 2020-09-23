@@ -1,29 +1,26 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
-=======
->>>>>>> c317e4ace1bc59cfb713fe65bde036c61c9d042d
 {% block content %}
-       <div class ="container">
-            <p>제목 {{form.title}}</p>
-            <p> 이름 {{form.name}}</p>
-            식품사진 <p><img src ={{form.photo.url}}></p>
-            <p> 설명 {{form.explain}}</p>
-            <p>거래방법 {{form.deal_method}}</p>
-            유통기한 <p><img src = {{form.deadline.url}}></p>
-            <p>가격 {{form.price}}</p>
-            <p>거래장소 {{form.location}}</p>
+ 
 
-        </div>
-<<<<<<< HEAD
+   
 
 
     <head>
-        <title>좋아요 기능 구현</title>
+        
     </head>
     <body>
-        제목:{{current_form.title}}</br>
-        내용:{{current_from.body}}
+        <div class ="container">
+            <p>제목 {{current_form.title}}</p>
+            <p> 이름 {{current_form.name}}</p>
+            식품사진<p><img src ={{current_form.photo.url}}></p>
+            <p> 설명 {{current_form.explain}}</p>
+            <p>거래방법 {{current_form.deal_method}}</p>
+            <p>유통기한 <img src = {{current_form.deadline.url}}></p>
+            <p>가격 {{current_form.price}}</p>
+            <p>거래장소 {{current_form.location}}</p>
+
+        </div>
         <hr/>
         {% if current_user_like = True %}
         <form action="{url 'detail' current_form.id %}" method=POST>
@@ -42,7 +39,4 @@
     </body>
     </html>
 {% endblock %}
-=======
-{% endblock %}
 
->>>>>>> c317e4ace1bc59cfb713fe65bde036c61c9d042d
