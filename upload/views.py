@@ -1,5 +1,8 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from .models import Form
+from django.utils import timezone
+from django.core.paginator import Paginator
+
 
 
 # Create your views here.
@@ -24,5 +27,9 @@ def create(request):
     form.save()
     return redirect('/form/'+str(form.id))
 
-
-
+def list(request):
+  forms = Form.objects.all().order_by('-id')
+  paginator = Paginator(forms,6)
+  page = request.GET.get('page', 1)
+  posts = paginator.get_page(page)
+  return render(request, 'list.html',{'posts':posts})
