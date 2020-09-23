@@ -1,4 +1,5 @@
 from django.db import models
+from social.models import TestUserProfile
 
 # Create your models here.
 class Form(models.Model):
@@ -10,7 +11,7 @@ class Form(models.Model):
     deadline = models.ImageField(upload_to='images',null = True)
     price = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
-
+    like_count: models.IntegerField(default=0)
 
 
 class Photo(models.Model):
@@ -21,3 +22,10 @@ class Photo(models.Model):
 class Deadline(models.Model):
     form = models.ForeignKey(Form, on_delete=models.CASCADE, null = True, related_name ='form3')
     deadline= models.ImageField(upload_to='images/',null= True )
+
+
+
+class Like(models.Model):    
+    user = models. ForeignKey(TestUserProfile, on_delete=models.CASCADE, null = True)
+    form = models. ForeignKey(Form, on_delete=models.CASCADE, null = True) 
+    like = models. BooleanField       

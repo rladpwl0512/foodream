@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path, os
+<<<<<<< HEAD
+
+=======
 from django.contrib.messages import constants as messages_constants
+>>>>>>> c317e4ace1bc59cfb713fe65bde036c61c9d042d
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -40,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp.apps.MyappConfig',
+<<<<<<< HEAD
+=======
     'social.apps.SocialConfig',
 
 
@@ -53,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.naver',
     'allauth.socialaccount.providers.kakao',
+>>>>>>> c317e4ace1bc59cfb713fe65bde036c61c9d042d
     'upload.apps.UploadConfig',
     'mileage.apps.MileageConfig',
 ]
@@ -137,6 +144,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+<<<<<<< HEAD
+=======
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -150,6 +159,7 @@ ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아�
 ACCOUNT_SIGNUP_FORM_CLASS = 'social.forms.SignupForm'
 
 MESSAGE_LEVEL = messages_constants.DEBUG
+>>>>>>> c317e4ace1bc59cfb713fe65bde036c61c9d042d
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload','media')
 MEDIA_URL = 'upload/media/'
 
