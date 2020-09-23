@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.kakao',
 >>>>>>> c317e4ace1bc59cfb713fe65bde036c61c9d042d
     'upload.apps.UploadConfig',
+    'mileage.apps.MileageConfig',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +162,6 @@ MESSAGE_LEVEL = messages_constants.DEBUG
 >>>>>>> c317e4ace1bc59cfb713fe65bde036c61c9d042d
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload','media')
 MEDIA_URL = 'upload/media/'
+
+
+
