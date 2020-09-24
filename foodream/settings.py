@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.naver',
     'allauth.socialaccount.providers.kakao',
     'upload.apps.UploadConfig',
+    'mileage.apps.MileageConfig',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,6 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'social.forms.SignupForm'
 MESSAGE_LEVEL = messages_constants.DEBUG
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload','media')
 MEDIA_URL = 'upload/media/'
+
+
+

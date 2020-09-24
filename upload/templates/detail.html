@@ -1,14 +1,45 @@
+<!DOCTYPE html>
+<html>
 {% block content %}
-       <div class ="container">
-            <p>제목 {{form.title}}</p>
-            <p> 이름 {{form.name}}</p>
-            식품사진 <p><img src ={{form.photo.url}}></p>
-            <p> 설명 {{form.explain}}</p>
-            <p>거래방법 {{form.deal_method}}</p>
-            유통기한 <p><img src = {{form.deadline.url}}></p>
-            <p>가격 {{form.price}}</p>
-            <p>거래장소 {{form.location}}</p>
+ 
+
+   
+
+
+    <head>
+        
+    </head>
+    <body>
+        <div class ="container">
+            <p>제목 {{current_form.title}}</p>
+            <p> 이름 {{current_form.name}}</p>
+            식품사진<p><img src ={{current_form.photo.url}}></p>
+            <p> 설명 {{current_form.explain}}</p>
+            <p>거래방법 {{current_form.deal_method}}</p>
+            <p>유통기한 <img src = {{current_form.deadline.url}}></p>
+            <p>가격 {{current_form.price}}</p>
+            <p>거래장소 {{current_form.location}}</p>
 
         </div>
+<<<<<<< HEAD
+=======
+        <hr/>
+        {% if current_user_like = True %}
+        <form action="{url 'detail' current_form.id %}" method=POST>
+            {% csrf_token %}
+            <input type='submit' name='like'value='좋아요 취소'></input>
+        </form>
+        {% else %}
+        <form action="{% url 'detail' current_form.id %}" method=POST>
+            {% csrf_token %}
+            <input type='submit' name='like' value='좋아요'></input>
+        
+        </form>
+        </form>
+        {% endif %}
+        좋아요 갯수:{{current_form.like_count}}
+    </body>
+    </html>
+>>>>>>> 9cde82fdce728e5dde1781018d312b452b6e5989
 {% endblock %}
 
