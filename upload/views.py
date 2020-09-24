@@ -8,9 +8,7 @@ from django.core.paginator import Paginator
 
 
 # Create your views here.
-def detail(request, form_id):
-    form_detail =get_object_or_404(Form, pk = form_id)
-    return render(request, 'detail.html', {'form': form_detail})
+
 
 def upload(request):
     return render(request, 'upload.html')
@@ -28,6 +26,11 @@ def create(request):
     form.location = request.POST.get('location')
     form.save()
     return redirect('/form/'+str(form.id))
+
+
+def detail(request, form_id):
+    form_detail =get_object_or_404(Form, pk = form_id)
+    return render(request, 'detail.html', {'form': form_detail})
 
 def detail(request, form_id):
     current_user=request.user
