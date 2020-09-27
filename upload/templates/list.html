@@ -36,16 +36,16 @@
   {% endfor %}
     
   {% if posts.has_previous %}
-    <a class="listbutton" href="?page=1"><button type="button" class="btn btn-dark">첫 번째 페이지</button></a>&nbsp&nbsp&nbsp
+    <a class="listbutton" href="?page=1"><button type="button" class="btn btn-dark">첫 번째 페이지</button></a>
   {%endif%}
   {%if posts.has_next%}
-    <a href="?page={{posts.next_page_number}}"><button type="button" class="btn btn-dark">다음</button></a>&nbsp&nbsp&nbsp
+    <a href="?page={{posts.next_page_number}}"><button type="button" class="btn btn-dark">다음</button></a>
   {%endif%}
-  <span>{{posts.number}}</span>&nbsp
-  <span> of </span>&nbsp
-  <span>{{posts.paginator.num_pages}}</span>&nbsp&nbsp
+  <span>{{posts.number}}</span>
+  <span> of </span>
+  <span>{{posts.paginator.num_pages}}</span>
   {%if posts.has_previous%}
-      <a href="?page={{posts.previous_page_number}}"><button type="button" class="btn btn-dark">이전</button></a>&nbsp&nbsp&nbsp
+      <a href="?page={{posts.previous_page_number}}"><button type="button" class="btn btn-dark">이전</button></a>
   {%endif%}
   {%if posts.has_next%}
     <a class="listbutton" href="?page={{posts.paginator.num_pages}}"><button type="button" class="btn btn-dark">마지막 페이지</button></a>
