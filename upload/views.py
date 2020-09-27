@@ -32,23 +32,23 @@ def detail(request, form_id):
     form_detail =get_object_or_404(Form, pk = form_id)
     return render(request, 'detail.html', {'form': form_detail})
 
-def detail(request, form_id):
-    current_user=request.user
-    current_form=Form.objects.get(pk=form_id)
+# def detail(request, form_id):
+#     current_user=request.user
+#     current_form=Form.objects.get(pk=form_id)
 
-    if 'Like' in request.POST:
-        current_user_like=Like.objects.all().filter(user=current_user,form=current_form)
-        if current_user_like:
-            like=Like.objects.get(user=current_user, form=current_form)
-            if like.like:
-                like.delete()
-                current_form.like_count-=1
-            else:
-                like.like=True
-                like.save()
-                current_form.like_count+=1
-            return render(request,'detail.html', {'current_form':current_form, 'current_user_like':current_user_like })
-        return render(request,'detail.html',{'current_form':current_form})    
+#     if 'Like' in request.POST:
+#         current_user_like=Like.objects.all().filter(user=current_user,form=current_form)
+#         if current_user_like:
+#             like=Like.objects.get(user=current_user, form=current_form)
+#             if like.like:
+#                 like.delete()
+#                 current_form.like_count-=1
+#             else:
+#                 like.like=True
+#                 like.save()
+#                 current_form.like_count+=1
+#             return render(request,'detail.html', {'current_form':current_form, 'current_user_like':current_user_like })
+#         return render(request,'detail.html',{'current_form':current_form})    
 
 def list(request):
       forms = Form.objects.all().order_by('-id')
