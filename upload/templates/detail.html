@@ -1,0 +1,26 @@
+<!--오류해결-->
+<!DOCTYPE html>
+<html>
+{% block content %}
+    <head>
+        
+    </head>
+    <body>
+        <div class ="container">
+            <p>제목 {{form.title}}</p>
+            <p> 이름 {{form.name}}</p>
+            식품사진<p><img src ={{form.photo.url}}></p>
+            <p> 설명 {{form.explain}}</p>
+            <p>거래방법 {{form.deal_method}}</p>
+            <p>유통기한 <img src = {{form.deadline.url}}></p>
+            <p>가격 {{form.price}}</p>
+            <p>거래장소 {{form.location}}</p>
+
+        </div>
+    
+        
+    
+      
+    </body>
+    </html>
+{% endblock %}
