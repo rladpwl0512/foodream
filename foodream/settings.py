@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
     'social.apps.SocialConfig',
     'mypage.apps.MypageConfig',
+    'cart.apps.CartConfig',
 
 
     #allauth
@@ -50,11 +51,14 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     #provider 
+    'allauth.socialaccount.providers.auth0',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.naver',
     'allauth.socialaccount.providers.kakao',
+    # 'allauth.socialaccount.providers.facebook',
     'upload.apps.UploadConfig',
     'mileage.apps.MileageConfig',
+    'disqus',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +76,9 @@ ROOT_URLCONF = 'foodream.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'cart', 'templates/')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,19 +147,17 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-SITE_ID=1
-LOGIN_REDIRECT_URL='/'
+# SITE_ID=1
 
 # ACCOUNT_LOGOUT_REDIRECT_URL = "index"  # 로그아웃 후 리디렉션 할 페이지
+LOGIN_REDIRECT_URL='/' #로그인 후 리디렉션 할 페이지
 ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃
-
 ACCOUNT_SIGNUP_FORM_CLASS = 'social.forms.SignupForm'
 
 MESSAGE_LEVEL = messages_constants.DEBUG
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload','media')
 MEDIA_URL = 'upload/media/'
 
-
-
-
+SITE_ID = 1 
+DISQUS_WEBSITE_SHORTNAME = 'foodream'
 
