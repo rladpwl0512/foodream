@@ -22,3 +22,10 @@ def signin(request):
 
     else:        
         return render(request, 'signin.html')
+
+def kakao_login(request):
+    app_rest_api_key = os.environ.get("KAKAO_REST_API_KEY")
+    redirect_uri = main_domain + "users/login/kakao/callback"
+    return redirect(
+        f"https://kauth.kakao.com/oauth/authorize?client_id={'c867c4f396bb856e3bf6af90501d44f2'}&redirect_uri={'http://127.0.0.1:8000/accounts/kakao/login/callback/'}&response_type=code"
+    )

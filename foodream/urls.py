@@ -25,21 +25,36 @@ import social.views
 import myapp.views
 import upload.views
 import mileage.views
+import mypage.views
+import cart.views
+from upload.views import FormLike, FormFavorite
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', social.views.signin, name="signin"),
     path('accounts/', include('allauth.urls')),
     path('home/', myapp.views.home, name="home"),
+
     path('upload/',upload.views.upload, name = "upload"),
     path('form/<int:form_id>/', upload.views.detail , name= "detail"),
     path('create', upload.views.create, name= 'create'),
+    path('list/', upload.views.list , name= "list"),
+    #좋아요구현
+    path('like/<int:form_id>/', FormLike.as_view(), name="like"),     # upload.views.FormLike
+    path('favorite/<int:form_id>/', FormFavorite.as_view(), name="favorite"), # upload.views.FormFavorite
+
+
+
     path('mileage/<int:mileage_id>', mileage.views.content, name= "content"),
     path('mileage/<int:mileage_id>/donate', mileage.views.donate, name= "donate"),
     path('mileage/popup', mileage.views.popup, name = "popup"),
-
     
-    path('list/', upload.views.list , name= "list"),
+    path('mypage/', mypage.views.mypage, name="mypage"),
+    # path('sell/', mypage.views.sell, name="sell"), 
+    path('buy/', mypage.views.buy, name="buy"),  
+    path('wish/', mypage.views.wish, name="wish"),
     # path('accounts/kakao/login/callback/', myapp.views.home, name="kakao callback"),
+    path('cart/', include('cart.urls')),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

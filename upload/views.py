@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404, redirect
-from .models import Form, Like
+from .models import Form
 from django.utils import timezone
 from django.core.paginator import Paginator
 
@@ -56,3 +56,43 @@ def list(request):
       page = request.GET.get('page', 1)
       posts = paginator.get_page(page)
       return render(request, 'list.html',{'posts':posts})
+
+from django.views.generic.base import View
+from django.http import HttpResponseForbidden, HttpResponseRedirect
+from urllib.parse import urlparse
+
+class FormLike(View):
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        else: 
+            if 'form_id' in kwargs:
+                form_id = kwargs['form_id']
+                form = Form.objects.get(pk=form_id)
+                user = request.user
+                if user in form.like.all():
+                    form.like.remove(user)
+                else:
+                    form.like.add(user)
+
+            referer_url = request.META.get('HPPP_REFERER')
+            path = urlparse(referer_url).path
+            return HttpResponseRedirect(path)
+
+class FormFavorite(View):
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        else: 
+            if 'form_id' in kwargs:
+                form_id = kwargs['form_id']
+                form = Form.objects.get(pk=form_id)
+                user = request.user
+                if user in form.favorite.all():
+                    form.favorite.remove(user)
+                else:
+                    form.favorite.add(user)
+
+            referer_url = request.META.get('HPPP_REFERER')
+            path = urlparse(referer_url).path
+            return HttpResponseRedirect(path)
