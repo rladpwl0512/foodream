@@ -17,3 +17,10 @@ def donate(request, mileage_id):
 
 def popup(request):
     return render(request, 'popup.html')
+
+def donate_li(request):
+      forms = Form.objects.all().order_by('-id')
+      paginator = Paginator(forms,6)
+      page = request.GET.get('page', 1)
+      posts = paginator.get_page(page)
+      return render(request, 'donate_li.html',{'posts':posts})

@@ -42,6 +42,11 @@ urlpatterns = [
     #좋아요구현
     path('like/<int:form_id>/', FormLike.as_view(), name="like"),     # upload.views.FormLike
     path('favorite/<int:form_id>/', FormFavorite.as_view(), name="favorite"), # upload.views.FormFavorite
+    path('donate_li/', mileage.views.donate_li , name= "donate_li"),
+    path('create', myapp.views.create , name= "create"),
+    path('form/<int:form_id>/delete/', myapp.views.delete , name= "delete"),
+    path('form/<int:form_id>/edit', myapp.views.edit , name= "edit"),
+    path('form/<int:form_id>/update', myapp.views.update , name= "update"),
 
 
 

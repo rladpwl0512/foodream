@@ -17,6 +17,10 @@ class Form(models.Model):
 class Photo(models.Model):
     form = models.ForeignKey(Form, on_delete= models.CASCADE, null = True, related_name='form2')
     photo = models.ImageField(upload_to='images/', blank = True, null = True )
+    def delete(self, *args, **kwargs):
+        storage, path = self.photo.storage, self.photo.path
+        super(Photo, self).delete(*args, **kwargs)
+        storage.delete(path)
     
 
 class Deadline(models.Model):
