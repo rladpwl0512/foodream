@@ -34,6 +34,20 @@
             <p>가격: {{form.price}}</p>
             <p>거래장소: {{form.location}}</p>
         </div><br>
+        
+        <form action = "{% url 'edit' form.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value = "수정하기">
+        </form>
+
+        <form action = "{% url 'delete' form.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value = "삭제하기">
+        </form>
+
+        <!-- <a href="{% url 'home' %}">돌아가기</a> -->
+
+    </div><br>
 
         <!--장바구니-->
         <div class = "wish">
